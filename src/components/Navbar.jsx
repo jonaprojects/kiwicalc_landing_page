@@ -68,7 +68,7 @@ export default function Navbar() {
         {/* Action Button */}
         <div className="nav-actions">
           <a
-            href="https://github.com"
+            href="https://github.com/jonaprojects/kiwicalc_landing_page"
             target="_blank"
             rel="noreferrer"
             className="btn-github"

@@ -63,7 +63,7 @@ function App() {
                   <span>GitBook Docs</span>
                 </a>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/jonaprojects/kiwicalc_landing_page"
                   target="_blank"
                   rel="noreferrer"
                   className="footer-social-btn"

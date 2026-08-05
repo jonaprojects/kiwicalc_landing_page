@@ -171,7 +171,7 @@ export default function Hero() {
               <ArrowRight size={18} />
             </a>
             <a
-              href="https://github.com"
+              href="https://github.com/jonaprojects/kiwicalc_landing_page"
               target="_blank"
               rel="noreferrer"
               className="btn-secondary"
