@@ -243,22 +243,50 @@
 
 /* Responsiveness */
 @media (max-width: 1024px) {
+  .features-section {
+    padding: 4.5rem 0;
+  }
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
   }
 }
 
 @media (max-width: 768px) {
+  .features-section {
+    padding: 3.5rem 0;
+  }
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
   .features-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
   }
   .features-bottom-callout {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     padding: 1.5rem;
+    gap: 1.25rem;
   }
   .callout-btn {
     width: 100%;
     justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .feature-card {
+    padding: 1.5rem 1.25rem;
+  }
+  .card-title {
+    font-size: 1.15rem;
+  }
+  .card-description {
+    font-size: 0.875rem;
+  }
+  .features-bottom-callout {
+    padding: 1.25rem;
   }
 }

@@ -475,48 +475,150 @@
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
+  .hero-section {
+    padding: 40px 0 70px 0;
+  }
+
   .hero-container {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 48px;
   }
 
   .hero-title {
-    font-size: 38px;
+    font-size: clamp(34px, 5vw, 42px);
   }
 
   .hero-description {
     max-width: 100%;
+    font-size: 16px;
   }
 
   .hero-highlights {
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 16px 24px;
   }
 }
 
-@media (max-width: 640px) {
-  .hero-title {
-    font-size: 32px;
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 30px 0 60px 0;
+  }
+
+  .hero-glow-sphere {
+    width: 280px;
+    height: 280px;
+    top: 5%;
+    right: 5%;
+  }
+
+  .hero-install-box {
+    max-width: 100%;
   }
 
   .hero-actions {
     flex-direction: column;
     width: 100%;
+    gap: 12px;
   }
 
   .btn-primary, .btn-secondary {
     width: 100%;
     justify-content: center;
+    padding: 13px 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: clamp(26px, 7vw, 34px);
+    letter-spacing: -0.8px;
+  }
+
+  .hero-badge {
+    padding: 5px 12px;
+    margin-bottom: 18px;
+  }
+
+  .badge-text {
+    font-size: 12px;
+  }
+
+  .hero-install-box {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .install-text {
+    font-size: 13px;
+  }
+
+  .btn-copy-install {
+    padding: 5px 9px;
+    font-size: 12px;
   }
 
   .ide-header {
     flex-direction: column;
+    align-items: stretch;
     gap: 10px;
-    align-items: flex-start;
+    padding: 10px 12px;
+  }
+
+  .ide-controls {
+    display: none;
   }
 
   .ide-tabs {
     width: 100%;
     overflow-x: auto;
+    white-space: nowrap;
+    padding: 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .ide-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ide-actions {
+    justify-content: flex-end;
+    width: 100%;
+    padding-top: 4px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .ide-code-container {
+    padding: 12px 14px;
+  }
+
+  .console-body {
+    min-height: 50px;
+  }
+
+  .console-output {
+    font-size: 11.5px;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-install-box {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .install-prompt {
+    justify-content: center;
+  }
+
+  .btn-copy-install {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .highlight-item {
+    font-size: 12px;
   }
 }

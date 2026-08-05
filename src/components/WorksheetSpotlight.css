@@ -231,12 +231,50 @@
 }
 
 /* Responsiveness */
-@media (max-width: 900px) {
+@media (max-width: 960px) {
+  .worksheets-section {
+    padding: 4.5rem 0;
+  }
   .worksheets-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
   }
   .worksheets-card {
-    padding: 2rem 1.5rem;
+    padding: 2.5rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .worksheets-section {
+    padding: 3.5rem 0;
+  }
+  .worksheets-card {
+    padding: 2rem 1.25rem;
+  }
+  .btn-worksheet-doc {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .paper-mockup {
+    padding: 1.25rem 1rem;
+  }
+  .paper-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .btn-toggle-solution {
+    width: 100%;
+    justify-content: center;
+  }
+  .paper-problem {
+    padding: 0.875rem 1rem;
+  }
+  .sol-math {
+    font-size: 0.75rem;
+    overflow-x: auto;
   }
 }

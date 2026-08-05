@@ -123,6 +123,12 @@ code, pre {
   padding: 0 24px;
 }
 
+@media (max-width: 600px) {
+  .container {
+    padding: 0 16px;
+  }
+}
+
 /* Selection */
 ::selection {
   background: rgba(34, 197, 94, 0.3);

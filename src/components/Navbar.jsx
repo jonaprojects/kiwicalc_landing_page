@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { BookOpen, Sparkles, Terminal, ExternalLink } from 'lucide-react';
+import { BookOpen, Sparkles, Terminal, ExternalLink, Menu, X } from 'lucide-react';
 import { GithubIcon, GitBookIcon } from './Icons';
 import './Navbar.css';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,11 +15,27 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Prevent background scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileOpen]);
+
+  const closeMobile = () => {
+    setMobileOpen(false);
+  };
+
   return (
     <header className={`navbar-header ${scrolled ? 'scrolled' : ''}`}>
       <div className="container navbar-container">
         {/* Brand */}
-        <a href="#" className="brand-link">
+        <a href="#" className="brand-link" onClick={closeMobile}>
           <div className="brand-logo-icon">
             <svg viewBox="0 0 100 100" className="kiwi-svg-logo">
               <circle cx="50" cy="50" r="46" fill="#10b981" />
@@ -39,7 +56,7 @@ export default function Navbar() {
           <span className="brand-badge">v0.1.0</span>
         </a>
 
-        {/* Links */}
+        {/* Desktop Links */}
         <nav className="nav-menu">
           <a href="#features" className="nav-link">
             Features
@@ -65,7 +82,7 @@ export default function Navbar() {
           </a>
         </nav>
 
-        {/* Action Button */}
+        {/* Action Button & Hamburger Toggle */}
         <div className="nav-actions">
           <a
             href="https://github.com/jonaprojects/kiwicalc_landing_page"
@@ -77,8 +94,66 @@ export default function Navbar() {
             <GithubIcon size={18} />
             <span>GitHub</span>
           </a>
+
+          <button
+            className="btn-mobile-toggle"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? 'Close Menu' : 'Open Menu'}
+            aria-expanded={mobileOpen}
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Drawer Overlay */}
+      {mobileOpen && (
+        <div className="mobile-drawer-backdrop" onClick={closeMobile}>
+          <div
+            className="mobile-drawer"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <nav className="mobile-nav-list">
+              <a href="#features" className="mobile-nav-link" onClick={closeMobile}>
+                Features
+              </a>
+              <a href="#playground" className="mobile-nav-link" onClick={closeMobile}>
+                Interactive Sandbox
+              </a>
+              <a href="#recipes" className="mobile-nav-link" onClick={closeMobile}>
+                Code Recipes
+              </a>
+              <a href="#worksheets" className="mobile-nav-link" onClick={closeMobile}>
+                PDF Worksheets
+              </a>
+              <a
+                href="https://jona-projects.gitbook.io/kiwicalc"
+                target="_blank"
+                rel="noreferrer"
+                className="mobile-nav-link mobile-doc-link"
+                onClick={closeMobile}
+              >
+                <GitBookIcon size={18} />
+                <span>GitBook Documentation</span>
+                <ExternalLink size={14} className="nav-link-external" />
+              </a>
+            </nav>
+
+            <div className="mobile-drawer-footer">
+              <a
+                href="https://github.com/jonaprojects/kiwicalc_landing_page"
+                target="_blank"
+                rel="noreferrer"
+                className="btn-mobile-github"
+                onClick={closeMobile}
+              >
+                <GithubIcon size={18} />
+                <span>Star on GitHub</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
