@@ -2,6 +2,8 @@
   position: relative;
   padding: 60px 0 90px 0;
   overflow: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 
 .hero-glow-sphere {
@@ -10,6 +12,8 @@
   right: 15%;
   width: 450px;
   height: 450px;
+  max-width: 80vw;
+  max-height: 80vw;
   background: radial-gradient(circle, rgba(34, 197, 94, 0.12) 0%, rgba(16, 185, 129, 0.04) 45%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
@@ -21,9 +25,11 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1.05fr 1.15fr;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.15fr);
   gap: 48px;
   align-items: center;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* Left Column */
@@ -32,6 +38,9 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
 }
 
 /* Badge */
@@ -45,6 +54,7 @@
   border-radius: var(--radius-full);
   margin-bottom: 24px;
   backdrop-filter: blur(8px);
+  max-width: 100%;
 }
 
 .badge-pulse-dot {
@@ -54,6 +64,7 @@
   border-radius: 50%;
   box-shadow: 0 0 10px var(--kiwi-400);
   animation: pulseDot 2s infinite ease-in-out;
+  flex-shrink: 0;
 }
 
 @keyframes pulseDot {
@@ -72,6 +83,9 @@
   font-weight: 600;
   color: var(--kiwi-400);
   letter-spacing: 0.2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* Hero Title */
@@ -82,6 +96,9 @@
   line-height: 1.15;
   margin-bottom: 20px;
   color: var(--text-primary);
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
 }
 
 .text-gradient {
@@ -97,6 +114,8 @@
   line-height: 1.6;
   margin-bottom: 30px;
   max-width: 540px;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* 1-Click Install Box */
@@ -113,6 +132,8 @@
   margin-bottom: 28px;
   box-shadow: var(--shadow-sm);
   transition: all 0.25s ease;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .hero-install-box:hover {
@@ -125,12 +146,15 @@
   align-items: center;
   gap: 10px;
   font-family: var(--font-mono);
+  min-width: 0;
+  overflow: hidden;
 }
 
 .terminal-symbol {
   color: var(--kiwi-500);
   font-weight: 700;
   user-select: none;
+  flex-shrink: 0;
 }
 
 .install-text {
@@ -139,6 +163,9 @@
   font-weight: 500;
   background: transparent;
   padding: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .btn-copy-install {
@@ -153,6 +180,7 @@
   font-size: 13px;
   font-weight: 500;
   transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 
 .btn-copy-install:hover {
@@ -177,6 +205,8 @@
   gap: 16px;
   margin-bottom: 36px;
   flex-wrap: wrap;
+  width: 100%;
+  max-width: 100%;
 }
 
 .btn-primary {
@@ -191,6 +221,7 @@
   border-radius: var(--radius-full);
   box-shadow: 0 4px 20px rgba(34, 197, 94, 0.35);
   transition: all 0.25s ease;
+  text-decoration: none;
 }
 
 .btn-primary:hover {
@@ -219,6 +250,7 @@
   padding: 12px 22px;
   border-radius: var(--radius-full);
   transition: all 0.25s ease;
+  text-decoration: none;
 }
 
 .btn-secondary:hover {
@@ -235,6 +267,8 @@
   padding-top: 16px;
   border-top: 1px solid var(--border-subtle);
   width: 100%;
+  max-width: 100%;
+  flex-wrap: wrap;
 }
 
 .highlight-item {
@@ -248,11 +282,14 @@
 
 .highlight-icon {
   color: var(--kiwi-400);
+  flex-shrink: 0;
 }
 
 /* Right Column: IDE Window Showcase */
 .hero-showcase {
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .ide-window {
@@ -264,6 +301,10 @@
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   transition: border-color 0.3s ease;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .ide-window:hover {
@@ -278,12 +319,16 @@
   padding: 12px 16px;
   background: rgba(8, 12, 20, 0.95);
   border-bottom: 1px solid var(--border-subtle);
+  width: 100%;
+  box-sizing: border-box;
+  gap: 8px;
 }
 
 .ide-controls {
   display: flex;
   align-items: center;
   gap: 7px;
+  flex-shrink: 0;
 }
 
 .control-dot {
@@ -313,6 +358,9 @@
   background: rgba(0, 0, 0, 0.3);
   padding: 3px;
   border-radius: var(--radius-sm);
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .ide-tab {
@@ -323,6 +371,9 @@
   padding: 4px 10px;
   border-radius: 6px;
   transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .ide-tab:hover {
@@ -341,6 +392,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-shrink: 0;
 }
 
 .ide-btn-action {
@@ -353,6 +405,7 @@
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 
 .ide-btn-action:hover {
@@ -372,6 +425,7 @@
   font-size: 12px;
   font-weight: 600;
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 
 .ide-btn-run:hover {
@@ -391,6 +445,9 @@
   overflow-x: auto;
   background: #090f1d;
   font-family: var(--font-mono);
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .ide-code {
@@ -399,6 +456,8 @@
   line-height: 1.6;
   color: #c9d1d9;
   text-align: left;
+  min-width: 0;
+  max-width: 100%;
 }
 
 /* Console Section */
@@ -407,6 +466,10 @@
   border-top: 1px solid var(--border-subtle);
   padding: 12px 18px;
   text-align: left;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .console-header {
@@ -414,6 +477,8 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 4px;
 }
 
 .console-title {
@@ -437,6 +502,9 @@
   min-height: 70px;
   display: flex;
   align-items: flex-start;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .console-loading {
@@ -456,6 +524,7 @@
   border-top-color: var(--kiwi-400);
   border-radius: 50%;
   animation: spin 0.6s linear infinite;
+  flex-shrink: 0;
 }
 
 @keyframes spin {
@@ -471,6 +540,9 @@
   color: #a7f3d0;
   margin: 0;
   white-space: pre-wrap;
+  word-break: break-word;
+  min-width: 0;
+  max-width: 100%;
 }
 
 /* Responsive adjustments */
@@ -480,7 +552,7 @@
   }
 
   .hero-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 48px;
   }
 

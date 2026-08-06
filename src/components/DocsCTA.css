@@ -1,93 +1,130 @@
 .docs-section {
   position: relative;
-  padding: 6rem 0;
+  padding: 6rem 0 8rem 0;
   border-top: 1px solid var(--border-subtle);
+  background: radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.05) 0%, transparent 60%);
+  overflow: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 
+/* Banner */
 .docs-hero-banner {
   position: relative;
-  background: linear-gradient(180deg, rgba(16, 185, 129, 0.06) 0%, rgba(4, 7, 13, 0.8) 100%), var(--bg-card);
-  border: 1px solid var(--border-card);
-  border-radius: var(--radius-xl);
-  padding: 4rem 3rem;
+  border-radius: var(--radius-2xl);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(6, 182, 212, 0.06) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 4rem 3.5rem;
+  margin-bottom: 4rem;
   overflow: hidden;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
-.banner-glow-bg {
+.docs-banner-glow {
   position: absolute;
   top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 500px;
-  height: 250px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, transparent 70%);
-  filter: blur(80px);
+  right: -100px;
+  width: 350px;
+  height: 350px;
+  max-width: 70vw;
+  max-height: 70vw;
+  background: var(--kiwi-500);
+  filter: blur(120px);
+  opacity: 0.18;
   pointer-events: none;
 }
 
-.banner-header {
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto 3.5rem auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.docs-banner-content {
   position: relative;
   z-index: 1;
+  max-width: 650px;
+  min-width: 0;
+  width: 100%;
 }
 
-.banner-title {
-  font-size: clamp(2rem, 3.5vw, 2.75rem);
+.docs-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--kiwi-300);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  max-width: 100%;
+}
+
+.docs-banner-title {
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
-  line-height: 1.2;
   letter-spacing: -0.03em;
+  line-height: 1.15;
   color: var(--text-primary);
   margin-bottom: 1rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
 }
 
-.banner-subtitle {
+.docs-banner-subtitle {
   font-size: 1.0625rem;
   color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 2rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
-.banner-actions {
+.docs-banner-actions {
   display: flex;
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
-  justify-content: center;
+  min-width: 0;
+  max-width: 100%;
 }
 
-.btn-gitbook-primary {
+.btn-docs-primary {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
   padding: 0.875rem 1.75rem;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-full);
   background: var(--kiwi-500);
-  color: #041009;
+  color: #041209;
   font-size: 0.9375rem;
   font-weight: 700;
   text-decoration: none;
   box-shadow: 0 4px 20px rgba(16, 185, 129, 0.35);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.25s ease;
 }
 
-.btn-gitbook-primary:hover {
+.btn-docs-primary:hover {
   background: var(--kiwi-400);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
 }
 
-.btn-github-secondary {
+.btn-docs-primary .arrow-icon {
+  transition: transform 0.2s ease;
+}
+
+.btn-docs-primary:hover .arrow-icon {
+  transform: translateX(3px);
+}
+
+.btn-docs-secondary {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
   padding: 0.875rem 1.5rem;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-full);
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: var(--text-primary);
@@ -97,120 +134,142 @@
   transition: all 0.2s ease;
 }
 
-.btn-github-secondary:hover {
+.btn-docs-secondary:hover {
   background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.25);
   transform: translateY(-2px);
 }
 
-/* Chapter Grid */
+/* Chapters Grid */
 .doc-chapters-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-  position: relative;
-  z-index: 1;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 100%;
 }
 
 .chapter-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem 1.5rem;
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  background: rgba(4, 7, 13, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: var(--radius-lg);
-  padding: 1.25rem 1.25rem;
+  flex-direction: column;
   text-decoration: none;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .chapter-card:hover {
-  background: rgba(16, 185, 129, 0.08);
-  border-color: rgba(16, 185, 129, 0.3);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  border-color: rgba(16, 185, 129, 0.35);
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.chapter-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .chapter-icon-box {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--kiwi-400);
-  flex-shrink: 0;
   transition: transform 0.2s ease;
+  flex-shrink: 0;
 }
 
 .chapter-card:hover .chapter-icon-box {
-  transform: scale(1.1);
+  transform: scale(1.08);
   background: rgba(16, 185, 129, 0.15);
-  border-color: var(--kiwi-500);
 }
 
-.chapter-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  flex-grow: 1;
-}
-
-.chapter-title {
-  font-size: 0.9375rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.chapter-desc {
-  font-size: 0.8125rem;
-  color: var(--text-secondary);
-  line-height: 1.3;
-}
-
-.chapter-arrow {
+.chapter-link-icon {
   color: var(--text-muted);
   transition: all 0.2s ease;
   flex-shrink: 0;
 }
 
-.chapter-card:hover .chapter-arrow {
-  color: var(--kiwi-300);
-  transform: translateX(3px);
+.chapter-card:hover .chapter-link-icon {
+  color: var(--kiwi-400);
+  transform: translate(2px, -2px);
+}
+
+.chapter-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.chapter-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.chapter-read-time {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  margin-top: auto;
 }
 
 /* Responsiveness */
 @media (max-width: 1024px) {
   .docs-section {
-    padding: 4.5rem 0;
+    padding: 4.5rem 0 6rem 0;
+  }
+  .docs-hero-banner {
+    padding: 3rem 2.5rem;
   }
   .doc-chapters-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
   }
 }
 
 @media (max-width: 768px) {
   .docs-section {
-    padding: 3.5rem 0;
+    padding: 3.5rem 0 4.5rem 0;
   }
   .docs-hero-banner {
-    padding: 2.5rem 1.5rem;
-  }
-  .banner-header {
-    margin-bottom: 2.25rem;
+    padding: 2.25rem 1.5rem;
+    margin-bottom: 2.5rem;
   }
   .doc-chapters-grid {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
   }
-  .banner-actions {
+  .docs-banner-actions {
     flex-direction: column;
-    width: 100%;
+    align-items: stretch;
     gap: 0.75rem;
   }
-  .btn-gitbook-primary,
-  .btn-github-secondary {
+  .btn-docs-primary,
+  .btn-docs-secondary {
     width: 100%;
     justify-content: center;
   }
@@ -218,9 +277,9 @@
 
 @media (max-width: 480px) {
   .docs-hero-banner {
-    padding: 2rem 1.15rem;
+    padding: 1.75rem 1.25rem;
   }
   .chapter-card {
-    padding: 1rem;
+    padding: 1.35rem 1.15rem;
   }
 }
