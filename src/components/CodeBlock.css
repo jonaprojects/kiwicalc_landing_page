@@ -7,6 +7,9 @@
   line-height: 1.65;
   color: #e2e8f0;
   overflow-x: auto;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .code-block-pre code {
@@ -14,6 +17,7 @@
   font-size: inherit;
   line-height: inherit;
   color: inherit;
+  max-width: 100%;
 }
 
 /* Prism Token Themes for Obsidian Kiwi */

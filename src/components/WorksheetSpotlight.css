@@ -2,6 +2,7 @@
   position: relative;
   padding: 6rem 0;
   border-top: 1px solid var(--border-subtle);
+  overflow: hidden;
 }
 
 .worksheets-card {
@@ -10,13 +11,31 @@
   border-radius: var(--radius-xl);
   padding: 3.5rem 3rem;
   box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .worksheets-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   gap: 3.5rem;
   align-items: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.worksheets-info {
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+}
+
+.worksheets-preview-col {
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
 }
 
 .worksheets-title {
@@ -26,6 +45,8 @@
   letter-spacing: -0.03em;
   color: var(--text-primary);
   margin-bottom: 1rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .worksheets-description {
@@ -44,15 +65,17 @@
 
 .feat-bullet {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.75rem;
   font-size: 0.9375rem;
   color: var(--text-primary);
+  line-height: 1.45;
 }
 
 .feat-check {
   color: var(--kiwi-400);
   flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .worksheet-code-box {
@@ -61,6 +84,10 @@
   border-radius: var(--radius-md);
   padding: 1rem 1.25rem;
   margin-bottom: 1.75rem;
+  overflow-x: auto;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .worksheet-code-box pre {
@@ -69,6 +96,9 @@
   font-size: 0.8125rem;
   line-height: 1.6;
   color: #a5f3fc;
+  overflow-x: auto;
+  max-width: 100%;
+  white-space: pre;
 }
 
 .btn-worksheet-doc {
@@ -101,6 +131,11 @@
   padding: 1.75rem;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .paper-header {
@@ -110,12 +145,15 @@
   padding-bottom: 1rem;
   border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
   margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
 .paper-branding {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+  min-width: 0;
 }
 
 .paper-subject {
@@ -144,6 +182,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .btn-toggle-solution:hover {
@@ -163,6 +202,11 @@
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-md);
   padding: 1rem 1.25rem;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .problem-num {
@@ -177,6 +221,8 @@
   font-size: 0.875rem;
   color: var(--text-secondary);
   line-height: 1.5;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .problem-text code {
@@ -186,6 +232,7 @@
   color: #67e8f9;
   font-family: var(--font-mono);
   font-size: 0.8125rem;
+  word-break: break-all;
 }
 
 .problem-solution {
@@ -195,6 +242,8 @@
   background: rgba(16, 185, 129, 0.05);
   border-radius: var(--radius-sm);
   padding: 0.75rem;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .sol-tag {
@@ -211,6 +260,9 @@
   font-size: 0.8125rem;
   color: var(--text-primary);
   line-height: 1.5;
+  overflow-x: auto;
+  max-width: 100%;
+  word-break: break-word;
 }
 
 .paper-footer {
@@ -222,6 +274,8 @@
   justify-content: space-between;
   font-size: 0.6875rem;
   color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .paper-badge {
@@ -236,7 +290,7 @@
     padding: 4.5rem 0;
   }
   .worksheets-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 2.5rem;
   }
   .worksheets-card {
@@ -258,8 +312,18 @@
 }
 
 @media (max-width: 480px) {
+  .worksheets-card {
+    padding: 1.5rem 1rem;
+    border-radius: var(--radius-lg);
+  }
+  .worksheets-title {
+    font-size: 1.5rem;
+  }
+  .feat-bullet {
+    font-size: 0.875rem;
+  }
   .paper-mockup {
-    padding: 1.25rem 1rem;
+    padding: 1.25rem 0.875rem;
   }
   .paper-header {
     flex-direction: column;
@@ -271,7 +335,7 @@
     justify-content: center;
   }
   .paper-problem {
-    padding: 0.875rem 1rem;
+    padding: 0.875rem 0.875rem;
   }
   .sol-math {
     font-size: 0.75rem;
